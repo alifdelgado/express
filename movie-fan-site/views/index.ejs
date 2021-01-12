@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Movie Fan Site</title>
+    <% include head %>
+  </head>
+  <body>
+    <% include navbar %>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <h1>Now Playing</h1>
+        </div>
+      </div>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <% parseData.forEach(movie => { %>
+          <div class="col">
+            <div class="card h-100">
+              <a href="/movie/<%= movie.id %>">
+                <img src="<%= imageBaseUrl + movie.poster_path %>" class="card-img-top" alt="<%= movie.title %>">
+              </a>
+              <div class="card-body">
+                <h5 class="card-title"><%= movie.title %></h5>
+                <p class="card-text"><%= movie.overview %></p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted"><%= movie.release_date %></small>
+              </div>
+            </div>
+          </div>
+        <% }); %>
+      </div>
+    </div>
+  </body>
+</html>
